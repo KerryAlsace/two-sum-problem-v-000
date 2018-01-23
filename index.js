@@ -13,7 +13,7 @@ function bruteForceTwoSum(array, sum) {
     return results
 }
 
-async function mergeSort(array) {
+function mergeSort(array) {
     // let midpoint = array.length / 2
     // let firstHalf = array.slice(0, midpoint)
     // let secondHalf = array.slice(midpoint, array.length)
@@ -30,8 +30,8 @@ async function mergeSort(array) {
         // console.log(firstHalf)
         let secondHalf = array.slice(midpoint, array.length)
         // console.log(secondHalf)
-        let first = await mergeSort(firstHalf)
-        let second = await mergeSort(secondHalf)
+        let first = mergeSort(firstHalf)
+        let second = mergeSort(secondHalf)
         merge(first, second)
     }
 
@@ -70,9 +70,9 @@ function findMinAndRemove(firstHalf, secondHalf) {
     }
 }
 
-async function binarySearchTwoSum(array, sum) {
+function binarySearchTwoSum(array, sum) {
     let results = [];
-    let sortedArray = await mergeSort(array)
+    let sortedArray = mergeSort(array)
 
     console.log("sortedArray")
     console.log(sortedArray)
@@ -90,7 +90,7 @@ async function binarySearchTwoSum(array, sum) {
     return results
 }
 
-async function binaryMatch(array, num) {
+function binaryMatch(array, num) {
     if (array.length < 2) {
         if (array[0] == num) {
             return true
@@ -102,9 +102,9 @@ async function binaryMatch(array, num) {
         let firstHalf = array.slice(0, midpoint)
         let secondHalf = array.slice(midpoint, array.length)
         if (secondHalf[0] > num) {
-            await binaryMatch(firstHalf, num)
+            binaryMatch(firstHalf, num)
         } else {
-            await binaryMatch(secondHalf, num)
+            binaryMatch(secondHalf, num)
         }
     }
 }
