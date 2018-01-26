@@ -64,18 +64,18 @@ function findMinAndRemove(firstHalf, secondHalf) {
 
 function binarySearchTwoSum(array, sum) {
     let results = [];
+    let missingNums = [];
     let sortedArray = mergeSort(array)
 
-    console.log("sortedArray")
-    console.log(sortedArray)
-    console.log("array")
-    console.log(array)
-
-    for (let i = 0; i < array.length; i++) {
-        let num = array[i]
+    for (let i = 0; i < sortedArray.length; i++) {
+        let num = sortedArray[i]
         let missingNum = sum - num
+        if (missingNums.indexOf(missingNum) != -1) {
+            continue
+        }
 
         if (binaryMatch(sortedArray, missingNum)) {
+            missingNums.push(num)
             results.push([num, missingNum])
         }
     }
@@ -94,17 +94,13 @@ function binaryMatch(array, num) {
         let firstHalf = array.slice(0, midpoint)
         let secondHalf = array.slice(midpoint, array.length)
         if (secondHalf[0] > num) {
-            binaryMatch(firstHalf, num)
+            return binaryMatch(firstHalf, num)
         } else {
-            binaryMatch(secondHalf, num)
+            return binaryMatch(secondHalf, num)
         }
     }
 }
 
-// function hashTwoSum(array, sum) {
+function hashTwoSum(array, sum) {
 
-// }
-
-let array = [2, 3, 4, 3, 6, 7]
-let sum = 6
-binarySearchTwoSum(array, sum)
+}
