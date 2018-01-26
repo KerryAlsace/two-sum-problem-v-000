@@ -14,32 +14,24 @@ function bruteForceTwoSum(array, sum) {
 }
 
 function mergeSort(array) {
-    // let midpoint = array.length / 2
-    // let firstHalf = array.slice(0, midpoint)
-    // let secondHalf = array.slice(midpoint, array.length)
-    // console.log("mergeSort")
-    // console.log(array)
+    let results = []
 
     if (array.length < 2) {
-        console.log(array)
-        return array
+        results.push(array[0])
     } else {
         let midpoint = array.length / 2
-        // console.log(midpoint)
         let firstHalf = array.slice(0, midpoint)
-        // console.log(firstHalf)
         let secondHalf = array.slice(midpoint, array.length)
-        // console.log(secondHalf)
+
         let first = mergeSort(firstHalf)
         let second = mergeSort(secondHalf)
-        merge(first, second)
+        results = results.concat(merge(first, second))
     }
 
+    return results
 }
 
 function merge(firstHalf, secondHalf) {
-    // console.log(firstHalf)
-    // console.log(secondHalf)
     let sorted = [];
     let currentMin;
 
