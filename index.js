@@ -102,5 +102,33 @@ function binaryMatch(array, num) {
 }
 
 function hashTwoSum(array, sum) {
+    let results = [];
+    let needs = [];
+    let hash = {};
 
+    for (let i = 0; i < array.length; i++) {
+        let value = array[i];
+        let key = sum - value;
+
+        hash[key] = value;
+    }
+
+    for (let i = 0; i < array.length; i++) {
+        let num = array[i]
+        let need = sum - num
+
+        if (hash[need] == num) {
+            if (needs.indexOf(need) != -1) {
+                continue
+            }
+            needs.push(need)
+            results.push([num, need])
+        }
+    }
+    return results
 }
+
+let arrayz = [2, 3, 4, 3, 6, 7]
+let sumz = 6
+console.log(hashTwoSum(arrayz, sumz))
+console.log([[2, 4], [3, 3]])
